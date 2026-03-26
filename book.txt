@@ -1,0 +1,23 @@
+Give models access to new functionality and data they can use to follow instructions and respond to prompts.
+
+Function calling (also known as tool calling) provides a powerful and flexible way for OpenAI models to interface with external systems and access data outside their training data. This guide shows how you can connect a model to data and actions provided by your application. We’ll show how to use function tools (defined by a JSON schema) and custom tools which work with free form text inputs and outputs.
+
+If your application has many functions or large schemas, you can pair function calling with tool search to defer rarely used tools and load them only when the model needs them. Only gpt-5.4 and later models support tool_search.
+
+How it works
+
+Let’s begin by understanding a few key terms about tool calling. After we have a shared vocabulary for tool calling, we’ll show you how it’s done with some practical examples.
+
+Tools - functionality we give the model
+Tool calls - requests from the model to use tools
+Tool call outputs - output we generate for the model
+Functions versus tools
+The tool calling flow
+
+Tool calling is a multi-step conversation between your application and a model via the OpenAI API. The tool calling flow has five high level steps:
+
+Make a request to the model with tools it could call
+Receive a tool call from the model
+Execute code on the application side with input from the tool call
+Make a second request to the model with the tool output
+Receive a final response from the model (or more tool calls)
