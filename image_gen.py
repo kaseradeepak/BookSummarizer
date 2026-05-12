@@ -2,6 +2,7 @@
 from openai import OpenAI
 import base64
 from pathlib import Path
+from utils import save_base64_image
 
 client = OpenAI()
 
@@ -58,3 +59,5 @@ save_base64_image(
     image_base64_encoded_string,
     "output_images/poster.png"
 )
+
+# Prompt Techniques
